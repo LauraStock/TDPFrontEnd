@@ -1,0 +1,30 @@
+body{
+
+    color: black;
+    background-color:mintcream;
+    font-family:monospace;
+    font-size:large;
+    text-align: left;
+}
+h1{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+h4{
+    text-align: center;
+}
+h2{
+    text-align: left;
+}
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+    border-color: teal;
+  }
