@@ -40,7 +40,7 @@ console.log(x ? `x is true` : `x is false`);
 /*
     * type is mutable in JS
     * it will try to work out the data type that you want
-    * this means you cna compere different types and have them equal
+    * this means you can compare different types and have them equal
 */
 
 console.log(1 == `1` ? `true` : `false`);
