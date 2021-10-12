@@ -135,7 +135,6 @@ switch(now){
         console.log(`It's a Saturday`);
         break;
     case 1:
-        console.log(`It's a Monday`);
     case 2:
     case 3:
     case 4:
