@@ -12,3 +12,24 @@ DOM Manipulation
 Methods -> actions
 Properties -> variables
 
+Destructoring
+
+const list = [1,2];
+
+const [a,b] = list;
+
+console.log(a) -> output: 1
+console.log(b) -> output: 2
+
+SPREAD OPERATOR
+
+const list = [1,2,3,4,5,6];
+[a,b,...c] = list;
+a -> 1
+b -> 2
+c -> [3,4,5,6]
+
+can do the same with objects
+
+PRIVACY
+To stop your javascript code from being accessed from the webpage, wrap the code.
