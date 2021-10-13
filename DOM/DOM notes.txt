@@ -1,0 +1,14 @@
+STRUCTURING 
+Variables
+ - let
+
+Events
+
+DOM Manipulation
+ - Document object model
+ - Shows a model of your webpage and how everything fits together
+ - Defines the properties of the html doc into objects
+ 
+Methods -> actions
+Properties -> variables
+

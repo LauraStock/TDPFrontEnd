@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Styling for display etc goes here-->
+    <style>        
+        .display {
+            display: block;
+            height: 20px;
+            width: 350px;
+            margin: 8px;
+            background-color: rgba(54, 54, 68, 0.1);
+            text-align: center;
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .button:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .input{
+            width: 45%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- Define html things-->
+    <!-- Need to have: text box, function buttons, history buttons, output diplay-->
+    
+    <input type="number" name="n1" id="n1" class="input"/>
+    <input type="number" name="n2" id="n2" class="input"/>
+    <br/><br/>
+    <button onclick="add()" id="add" class="button">+</button>
+    <button onclick="sub()" id="sub" class="button">-</button>
+    <button onclick="mult()" id="mult" class="button">x</button>
+    <button onclick="div()" id="div" class="button">÷</button>
+    <br/>
+    <br/>
+    <input type="textbox" id="output"></input>
+    <br/>
+    <br/>
+    <button onclick="addToHistory()" id="addHist" class="button">Add to History</button>
+    <button onclick="showHistory()" id="showHist" class="button">Show History</button>
+    <button onclick="clearHistory()" id="clearHist" class="button">Clear History</button>
+    <div id="outputDisp"> </div>
+    <br/>
+    <div id="container">    </div>
+    
+
+    <!-- Behaviour in JavaScript-->
+    <script>
+        // Variables
+        let history = [];
+        let addbtn = document.createElement("click");
+        var result = "";
+
+        //Methods
+        function add(){
+            ans = parseInt(n1.value) + parseInt(n2.value);
+            result = `${n1.value} + ${n2.value} = ${ans}`;
+            showResult();
+        }
+
+        function sub(){
+            ans = parseInt(n1.value) - parseInt(n2.value);
+            result = `${n1.value} - ${n2.value} = ${ans}`;
+            console.log(result);
+        }
+
+        function mult(){
+            ans = parseInt(n1.value) * parseInt(n2.value);
+            result = `${n1.value} x ${n2.value} = ${ans}`;
+            console.log(result);
+        }
+
+        function div(){
+            ans = parseInt(n1.value) / parseInt(n2.value);
+            result = `${n1.value} ÷ ${n2.value} = ${ans}`;
+            console.log(result);
+        }
+
+        function showResult(){
+            document.getElementById("output").value = result;
+
+        }
+
+        function clearHistory(){
+            for (i=0; i<history.length; i++){
+                var element = document.getElementById("printedHistory");
+                element.parentNode.removeChild(element);
+            }
+            history = [];
+        }
+
+        function showHistory(){
+            let elements = [];
+            for (i = 0; i < history.length; i++){
+                //making the grey box to put result in
+                let displayElement = document.createElement("div");
+                displayElement.id = "printedHistory";
+                displayElement.className = "display";
+                // formatting the text to put in the box
+                let text = document.createElement("p");
+                text.textContent = history[i];
+
+                //showing the box
+                displayElement.appendChild(text);
+                elements.push(displayElement);
+            }
+            elements.forEach(element => {
+                document.querySelector(`#container`).appendChild(element);
+            })
+        }
+        
+        function addToHistory(){
+            history.push(result);
+        }
+
+
+    </script>
+</body>
+</html>

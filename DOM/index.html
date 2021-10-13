@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <meta charset="UTF-8">    
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <title>Document</title> 
+
+        <!-- Presentation logic for what the HTML looks like is kept in CSS -->    
+        <style>        
+            .display {
+                display: block;
+                height: 80px;
+                width: 300px;
+                margin: 8px;
+                background-color: rgba(54, 54, 68, 0.1);
+                text-align: center;
+            }
+        </style>
+    </head>
+    
+    <body>    
+        <!-- Semantic structure of a page in HTML -->    
+        <button id="btn">Click me</button>    
+        <div id="container">    </div>    
+        <!-- <p id="display"></p> -->    
+        <!-- Behaviour in a JS script -->    
+        <script>        
+        // Variables        
+        let btn = document.querySelector("#btn");
+        // let display = document.querySelector("#display");        
+        let data = [
+            {
+                "name": "fred",
+                "age": 32            
+            },
+            {
+                "name": "bob",
+                "age": 27            
+            }
+        ];
+    function appendData() {
+        let elements = [];
+        for (i = 0; i < data.length; i++) {
+            let displayElement = document.createElement("div");
+            displayElement.className = "display";
+            let name = document.createElement("p");
+            name.textContent = "NAME: " + data[i].name;
+            let age = document.createElement("p");
+            age.textContent = `AGE: ${data[i].age}`;
+            displayElement.appendChild(name);
+            displayElement.appendChild(age);
+            elements.push(displayElement);
+        }
+        elements.forEach(element => {
+            document.querySelector("#container").appendChild(element);
+    });
+}
+btn.addEventListener("click", appendData);
+</script>
+</body>
+</html>
