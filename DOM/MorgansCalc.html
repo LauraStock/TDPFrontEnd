@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Document</title>    <style>        * {
+    box-sizing: border-box;
+}
+#display {
+    width: 100%;
+    height: 15vh;
+    background-color: rgba(26, 23, 23, 0.342);
+    margin-bottom: 8px;
+    font-size: larger;
+}
+input[type="button"] {
+    width: 80px;
+    height: 80px;
+    color: blue;
+}
+.calc-container {
+    display: inline-block;
+    width: 50%;
+}
+.history-box {
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+}
+</style>
+</head>
+
+<body>    
+    <div class="container">        
+        <input id="display" type="number"></input>        
+        <div class="calc-container">            
+            <div class="row">                
+                <input type="button" class="number" value="1"><input>                
+                <input type="button" class="number" value="2"><input>                
+                <input type="button" class="number" value="3"><input>                
+                <input type="button" class="number" value="4"><input>                
+                <input type="button" class="number" value="5"></input>            
+            </div>            
+            <div class="row">                
+                <input type="button" class="number" value="6"></input>                
+                <input type="button" class="number" value="7"></input>                
+                <input type="button" class="number" value="8"></input>                
+                <input type="button" class="number" value="9"></input>                
+                <input type="button" class="number" value="0"></input>            
+            </div>            
+            <div class="row">                
+                <input type="button" class="operator" value="+"></input>                
+                <input type="button" class="operator" value="-"></input>                
+                <input type="button" class="operator" value="*"></input>                
+                <input type="button" class="operator" value="/"></input>                
+                <input type="button" class="operator" value="="></input>                
+                <input type="button" class="operator" value="C"></input>                
+                <input type="button" class="decimal" value="."></input>            
+            </div>        
+            </div>        
+            <div class="history-box">            
+            <h1>History</h1>            
+            <button class="clear-history">Clear History</button>            
+            <div class="history-contents"></div>        
+            </div>    
+            </div>   
+
+            <script>        
+                // variables        
+                let calculatorState = {
+                    displayValue: 0,
+                    leftOperand: null,
+                    operator: null,
+                    rightOperand: null,
+                    decimal: false        };
+            let calculatorStateHistory = [];
+            let operators = document.querySelectorAll(".operator");
+            let numbers = document.querySelectorAll(".number");
+            let display = document.querySelector("#display");
+            let decimalPoint = document.querySelector(".decimal");
+            let historyBox = document.querySelector(".history-contents");
+            let clearHistoryBtn = document.querySelector(".clear-history");
+            // functions        
+            function updateDisplay(value) {
+                display.value = value;
+            }
+            function updateHistoryDisplay() {
+                historyBox.innerHTML = "";
+                calculatorStateHistory.forEach(state => {
+                    let stateBox = document.createElement("div");
+                    stateBox.style = "border: 1px solid black;";
+                    stateBox.textContent = `${state.leftOperand} ${state.operator} ${state.rightOperand} = ${state.result}`;
+                    historyBox.appendChild(stateBox);
+                });
+            }
+            function addHistoryObject(obj) {
+                calculatorStateHistory.push(obj);
+            }
+            function performOperation(operand1, operator, operand2) {
+                let historyObj = {
+                    leftOperand: operand1,
+                    operator: operator,
+                    rightOperand: operand2,
+                    result: 0            };
+                switch (operator) {
+                    case "+":
+                        historyObj.result = operand1 + operand2;
+                        break;
+                    case "-":
+                        historyObj.result = operand1 - operand2;
+                        break;
+                    case "*":
+                        historyObj.result = operand1 * operand2;
+                        break;
+                    case "/":
+                        historyObj.result = operand1 / operand2;
+                        break;
+                }
+                addHistoryObject(historyObj);
+                return historyObj.result;
+            }
+            function refreshState() {
+                calculatorState = {
+                    displayValue: 0,
+                    leftOperand: null,
+                    operator: null,
+                    rightOperand: null,
+                    decimal: false            };
+            }
+            // listeners        
+            numbers.forEach(num => {
+                num.addEventListener("click", (event) => {
+                    // if writing a decimal and number does not contain a decimal point already (prevents duplicate decimal points)                
+                    if (calculatorState.decimal && calculatorState.displayValue.toString().indexOf(".") == -1) {
+                        calculatorState.displayValue = `${calculatorState.displayValue == 0 ? "" : calculatorState.displayValue}.${event.target.value}`;
+                    } else {
+                        calculatorState.displayValue = `${calculatorState.displayValue == 0 ? "" : calculatorState.displayValue}${event.target.value}`;
+                    }
+                    // apply value to left operand if operator has not yet been specified                
+                    if (calculatorState.operator == null) {
+                        calculatorState.leftOperand = calculatorState.displayValue;
+                        console.log(`left operand: ${calculatorState.leftOperand}`);
+                    } 
+                    // otherwise apply value to right operand instead                
+                    else {
+                        calculatorState.rightOperand = calculatorState.displayValue;
+                        console.log(`right operand: ${calculatorState.rightOperand}`);
+                    }
+                    calculatorState.decimal = false;
+                    updateDisplay(calculatorState.displayValue);
+                });
+            });
+            operators.forEach(operator => {
+                operator.addEventListener("click", (event) => {
+                    // only perform operation if equals btn clicked and right operand is present                
+                    if (event.target.value == "=" && calculatorState.rightOperand != null) {
+                        calculatorState.displayValue = performOperation(Number.parseFloat(calculatorState.leftOperand), calculatorState.operator, Number.parseFloat(calculatorState.rightOperand));
+                        calculatorState.leftOperand = calculatorState.displayValue;
+                        calculatorState.operator = null;
+                        calculatorState.rightOperand = null;
+                    } 
+                    // clear the calculators history                
+                    else if (event.target.value == "C") {
+                        refreshState();
+                    } 
+                    // set the operator, prepare for right operand entry                
+                    else {
+                        calculatorState.operator = event.target.value;
+                        calculatorState.displayValue = 0;
+                        console.log(`Operator: ${calculatorState.operator}`);
+                    }
+                    updateDisplay(calculatorState.displayValue);
+                    updateHistoryDisplay();
+                });
+            });
+            decimalPoint.addEventListener("click", (event) => {
+                calculatorState.decimal = true;
+            });
+            clearHistoryBtn.addEventListener("click", (event) => {
+                historyBox.innerHTML = "";
+                calculatorStateHistory = [];
+            });
+    </script>
+</body>
+</html>
