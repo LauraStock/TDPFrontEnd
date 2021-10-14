@@ -1,0 +1,10 @@
+Accessibility is very important in developing web services - it is actually a legal requirement under the Equality Act 2010 to make reasonable adjustments to enable accessibility for disabled users of a service.
+
+https://reciteme.com/news/understanding-the-equality-act-and-website-accessibility
+
+Public sector websites must implement techniques that enable accessibility, private sector websites should or they may face legal action.
+
+
+The easiest way to ensure a web service is accessible is by meeting the level AA of the Web Content Accessibility Guidelines 2.1 (WCAG 2.1)
+
+https://www.gov.uk/service-manual/helping-people-to-use-your-service/testing-for-accessibility

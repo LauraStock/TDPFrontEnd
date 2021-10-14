@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>L5 Functions Demo 1</title>
+</head>
+
+<body>
+    <script>
+
+        let sName = "Peters";
+        let title = "Ms"
+        /*
+        // Function Declaration, named function
+        
+        function sayHello(name, title) {
+            return `Hello ${title} ${name}`;
+        }
+
+        */
+
+        //Anonymous functions
+        /*
+        let sayHello = function(name,title){
+            return `Hello ${title} ${name}`;
+        }
+        
+        */
+
+        //Arrow function
+        let sayHello = (name, title) => {
+            return `Hello ${title} ${name}`
+        };
+
+        //if there's only one parameter, don't need {}
+
+        //Default parameters (name, title="Ms")
+
+
+        console.log(sayHello(sName, title));
+
+
+        function add(nums) {
+            // pos = position (tracks the location in the array)  
+            // acc = accumulator (records the result of each recursive call)  
+            function iterate(pos, acc = 0) {
+                // exit condition    
+                if (pos >= nums.length) return acc;
+                //     
+                return iterate(pos + 1, acc + nums[pos]);
+            }
+            return iterate(0, 0);
+        }
+        // iterate(0, 0); // not defined, inaccessible as scoped to add functionlet 
+        result = add([1, 2, 3, 4, 5]); // 15
+        console.log(result);
+
+        //nums is an array
+        let addAlt = (nums) => {
+            let iterate = (pos, acc) => pos >= nums.length ? acc : iterate(pos + 1, acc + nums[pos]);
+            return iterate(0, 0);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
