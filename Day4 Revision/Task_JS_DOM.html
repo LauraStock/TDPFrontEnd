@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--HTML section-->
+    <div id="placeholder"></div>
+    <script>
+        // Javascript section
+        let colours = ['red', 'green', 'blue', 'orange', 'lime', 'olive', 'teal', 'yellow', 'pink', 'DeepSkyBlue', 'Magenta', 'purple', 'maroon', 'aquamarine'];
+
+
+        function buildP(placeholder, num) {
+            let i = 0;
+            do {
+                let p = document.createElement("p"); // create new <p> element
+                let text = document.createTextNode(`It's a rainbow!`); // create text to go in the paragraph element
+                p.style.color = colours[parseInt(Math.random() * colours.length)]; // pick a random colour and set the colour to the paragraph
+                p.appendChild(text); // put the text in the paragraph object
+                placeholder.appendChild(p); // put the paragraph in the HTML div block
+                i++;
+            } while (i < num)
+        }
+
+        let placeholder = document.querySelector("#placeholder"); // get the div block from the HTML
+        buildP(placeholder, 15); // call the buildP function
+
+    </script>
+</body>
+
+</html>
