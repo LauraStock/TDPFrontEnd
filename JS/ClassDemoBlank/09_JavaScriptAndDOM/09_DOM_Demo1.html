@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>JS DOM2</title>
+</head>
+
+<body>
+    <p>The world believes that: Success make you happy. The truth is: Happiness
+        makes you successful.</p>
+    <div>
+        <p id="para2" class="test">This is paragraph text.</p>
+        <p>This is paragraph text.</p>
+        <p>This is paragraph text.</p>
+    </div>
+    <ul>
+        <li><a href="text.doc">word document</a></li>
+        <li><a href="text2.doc">word document</a></li>
+        <li><a href="image.ppt">powerpoint document</a></li>
+        <li><a href="image2.ppt">powerpoint2 document</a></li>
+    </ul>
+    <script>
+        //let allP = document.getElementById("para2");
+        //let allP = document.querySelector("#para2");
+        // if using query selector, us# to select by id, use . to select by class
+        //allP.style.backgroundColor = "#ff0000";
+
+        //To select multiple elements of the same type
+        //let multP = document.getElementsByTagName("p");
+        let multP = document.querySelectorAll("p");
+        for (let i = 0; i < multP.length; i++) {
+            multP[i].style.backgroundColor = "#00FF00";
+        }
+
+        // Attribute selector (selecting by href in this case)
+
+        let wordDoc = document.querySelectorAll(`a[href$=".doc"]`);
+        for (let i = 0; i < wordDoc.length; i++) {
+            wordDoc[i].style.backgroundColor = "#FFC0CB";
+        }
+        // []  -- select attribute in css
+
+        //^=  starting with a value
+
+        //$=  ending with a value
+
+        //*= containing with the value
+
+        //Create New Content
+
+        //W3C
+        let allP = document.querySelector("#para2");
+
+        let newP = document.createElement("p");
+
+        let theText = document.createTextNode("i love javaScript");
+
+        newP.appendChild(theText);
+
+        allP.appendChild(newP);
+
+        //inserting html straight into the JS script
+        allP.innerHTML += "<h2>We love javaScript</h2>";
+
+    </script>
+
+</body>
+
+</html>

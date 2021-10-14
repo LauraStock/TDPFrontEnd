@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let darthVader = {
+            allegiance: "Empire",
+            weapon: "lightsabre",
+            sith: true
+        };
+        /*
+        let darthVader = new Object();
+        darthVader.allegiance = "Empire";
+        darthVader.weapon = "lightsabre";
+        darthVader.sith = true;
+        */
+        console.log(`darthVader's allegiance is ${darthVader.allegiance}`);
+
+        for (let item in darthVader) {
+            console.log(`${item} : ${darthVader[item]}`);
+        }
+        console.log(darthVader.Jedi);
+
+        console.log(Object.keys(darthVader).length);
+
+        // Object.key(objectName) returns an arrays of the keys
+
+        darthVader.children = 2;
+        darthVader.childNames = ["Luke", "Leia"];
+        console.log(darthVader.children);
+        console.log(darthVader.childNames[0]);
+
+        for (let item in darthVader) {
+            console.log(`${item} : ${darthVader[item]}`);
+        }
+        darthVader.allegiance = "The light side";
+        console.log(darthVader);
+        delete darthVader.children;
+
+        //let { allegiance = 'The light side', weapon = 'lightsabre', sith = true, childNames = ["Bill", "Ben"] } = darthVader;
+
+        //Destructoring the object
+        let { allegiance, weapon, sith, childNames } = darthVader;
+
+        console.log(allegiance);
+        console.log(weapon);
+        console.log(sith);
+
+        console.log(darthVader);
+
+        darthVader = {};
+
+    </script>
+</body>
+
+</html>
