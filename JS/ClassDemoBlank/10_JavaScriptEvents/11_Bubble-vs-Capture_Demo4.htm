@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE HTML>
 <html>
+
 <head>
     <title>content</title>
     <style type="text/css">
-        .d1
-        {
+        .d1 {
             background-color: green;
             position: relative;
             width: 150px;
@@ -12,9 +12,8 @@
             text-align: center;
             cursor: pointer;
         }
-        
-        .d2
-        {
+
+        .d2 {
             background-color: blue;
             position: absolute;
             top: 25px;
@@ -22,9 +21,8 @@
             width: 100px;
             height: 100px;
         }
-        
-        .d3
-        {
+
+        .d3 {
             background-color: red;
             position: absolute;
             top: 25px;
@@ -35,6 +33,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="d1">
         1
@@ -54,10 +53,11 @@
                 this.style.backgroundColor = 'yellow';
                 alert("target = " + e.target.className + ", this=" + this.className)
                 this.style.backgroundColor = '';
-                // e.stopPropagation();    //stop the click event from bubbling to parent elements:
-            }, false);         // set to 'true' to see capturing; chrome not working?
+                e.stopPropagation();    //stop the click event from bubbling to parent elements:
+            }, true);         // set to 'true' to see capturing; chrome not working?
         }
 
     </script>
 </body>
+
 </html>

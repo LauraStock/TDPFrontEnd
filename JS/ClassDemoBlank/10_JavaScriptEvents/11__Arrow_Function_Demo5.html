@@ -1,9 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>L11 Arrow Function</title>
 </head>
+
 <body>
     <!--Demo 1-->
     <button id="submitBtn">Click</button>
@@ -12,18 +14,15 @@
     <!-- <div>Click  me</div> -->
 
     <script>
-       // Demo 1 - Arrow Functions clean up code!
-      //Allow for clear, concise code.
-      // ECMAScript 5
+        // Demo 1 - Arrow Functions clean up code!
+        //Allow for clear, concise code.
+        // ECMAScript 5
 
-       //let button = document.querySelector('#submitBtn')
-    
-    //    button.addEventListener('click', function() {
-    //     alert("I was clicked"); 
-    //    }, false);
+        //let button = document.querySelector('#submitBtn')
 
-  
-
+        //    button.addEventListener('click', function() {
+        //     alert("I was clicked"); 
+        //    }, false);
 
 
 
@@ -35,22 +34,28 @@
         //   that does not create a new context for this. Which can be very helpful, but also a gotcha when used in situations, 
         //   such as event handlers
 
-         //let button = document.querySelector('#submitBtn')
-    
-        //    button.addEventListener('click', function() {
-        //     alert("I was clicked"); 
-        //     console.log(this);       //DOM Elemment
-        //    }, false);
+        /*
+        // normal function
+        let button = document.querySelector('#submitBtn')
+
+        button.addEventListener('click', function () {
+            alert("I was clicked");
+            console.log(this);       //DOM Elemment
+        }, false);
+        */
+
+        /*
+        // arrow function means this does not give the element object, instead it gives the window
+        let button = document.querySelector('#submitBtn')
+
+        button.addEventListener('click', () => {
+            alert("I was clicked");
+            console.log(this);       //Window object
+        }, false);
+        */
 
 
 
-
-
-
-
-
-
-        
     //Syntactically anonymous
 
     //     It is important to note that arrow functions are anonymous, 
@@ -81,7 +86,7 @@
 
 
 
-    
+
 
 
 
@@ -98,4 +103,5 @@
     </script>
 
 </body>
+
 </html>

@@ -1,15 +1,43 @@
 ﻿<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <title>L12 Form Selectors Demo 1</title>
 
-    <!-- <link href="FormStyles.css" rel="stylesheet" type="text/css" /> -->
+    <link href="FormStyles.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    
-    
-        <!-- <fieldset>
+
+    <form id="payment" method="get" action="submit.js">
+        <fieldset>
+            <legend>Your Details</legend>
+            <ol>
+                <li>
+                    <label for="title">Title</label>
+                    <select id="title" name="title">
+                        <option value="Dr">Dr</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="uname">Name</label>
+                    <input name="uname" id="uname" type="text" />
+                    <!--For attribute must match the id and name -->
+                </li>
+                <li>
+                    <label for="email">Email</label>
+                    <input name="email" id="email" type="text" />
+                </li>
+                <li>
+                    <label for="phone">Phone</label>
+                    <input name="phone" id="phone" type="phone" />
+                </li>
+            </ol>
+        </fieldset>
+        <fieldset>
             <legend>Delivery address</legend>
             <ol>
                 <li>
@@ -28,8 +56,8 @@
                     <input id="country" name="country" type="text">
                 </li>
             </ol>
-        </fieldset> -->
-        <!-- <fieldset>
+        </fieldset>
+        <fieldset>
             <legend>Card details</legend>
             <ol>
                 <li>
@@ -75,17 +103,28 @@
                     <input id="mailinglist" name="mailinglist" type="checkbox">
                 </li>
             </ol>
-        </fieldset> -->
-        <!-- <fieldset>
+        </fieldset>
+        <fieldset>
             <button>
                 Buy it!</button>
-        </fieldset> -->
-        </form>
-        <button id="but1">Form Value</button> 
+        </fieldset>
+    </form>
+    <button id="but1">Form Value</button>
 
-        <script>
-            
+    <script>
+        let but1 = document.querySelector("#but1");
+        let getValue = function (field) {
+            console.log(field.value);
+            console.log(field.value.length);
+            console.log(field.name);
+            console.log(field.disabled);
+        };
+        but1.addEventListener("click", function () {
+            getValue(uname);
+        }, false);
 
-        </script>
+
+    </script>
 </body>
+
 </html>
