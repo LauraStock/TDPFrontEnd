@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <script>
+        // Need to put the axios source in the header script (found on axios github)
+
+        // Demo 1 - Sending GET Requests
+        // axios.get("https://jsonplaceholder.typicode.com/posts")
+        //     .then((resp) => {
+        //         console.log(resp.data);
+        //     }).catch((err) => {
+        //         console.log(err);
+        //     });
+
+        //Demo 1A - rewrite the same code using async/await keywords
+
+        // const sendGetRequest = async () => {
+        //     try {
+        //         const resp = await axios.get("https://jsonplaceholder.typicode.com/posts");
+        //         console.log(resp.data);
+        //     } catch (err) {
+        //         console.error(err);
+        //     }
+        // }
+        // sendGetRequest();
+
+
+        //Skill Challenge 1:
+        //PUT requests are used to replace data at an endpoint.
+        //You can use the axios.put() method to send a PUT request in a similar fashion to how we send POST requests.
+        //1)To see it in action, let's create a PUT request that updates the properties of the first blog post.
+        //2) Create a "undatedPost" object with following properties: id, userID, title and body. Use any value you want.
+        //3) Use async, await, try & catch for error handling, and pass the object as second argument to the put method.
+
+        let updatedPost = {
+            id: 1,
+            userID: 1,
+            title: "Hello",
+            body: "Is this working?"
+        }
+
+        const sendPutRequest = async () => {
+            try {
+                const resp = await axios.put("https://jsonplaceholder.typicode.com/posts/1", updatedPost);
+                console.log(resp.data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        sendPutRequest();
+
+
+
+        //POST request
+        const newPost = {
+            userId: 1,
+            title: 'A new post',
+            body: 'This is the body of the new post'
+        };
+
+        const sendPostRequest = async () => {
+            try {
+                const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', newPost);
+                console.log(resp.data);
+            } catch (err) {
+                // Handle Error Here
+                console.error(err);
+            }
+        };
+        sendPostRequest();
+
+
+
+        // DELETE Request
+        const sendDeleteRequest = async () => {
+            try {
+                const resp = await axios.delete('https://jsonplaceholder.typicode.com/posts/1')
+                console.log(resp.data);
+            } catch (err) {
+                // Handle Error Here
+                console.error(err);
+            }
+        };
+        sendDeleteRequest();
+
+
+
+    </script>
+
+</body>
+
+</html>
